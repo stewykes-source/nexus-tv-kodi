@@ -49,9 +49,26 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
-      - name: Publish GitHub Release for version tags
-        if: startsWith(github.ref, 'refs/tags/v')
+      - name: Read Nexus skin version
+        id: version
+        run: |
+          VERSION=$(python -c "import xml.etree.ElementTree as ET; print(ET.parse('skin.nexus/addon.xml').getroot().attrib['version'])")
+          echo "value=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Publish permanent versioned GitHub Release
+        if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: v${{ steps.version.outputs.value }}
+          target_commitish: ${{ github.sha }}
+          name: Nexus TV v${{ steps.version.outputs.value }}
+          body: |
+            Installable Nexus skin package for Kodi 21 Omega.
+
+            Download **skin.nexus-${{ steps.version.outputs.value }}.zip** below and install it using Kodi's Add-ons → Install from zip file.
+
+            The ZIP contains the `skin.nexus/` add-on folder at its root; it is directly installable and is not a nested Actions artifact.
           generate_release_notes: true
+          make_latest: true
+          overwrite_files: true
           files: dist/skin.nexus-*.zip
