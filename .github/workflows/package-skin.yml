@@ -16,16 +16,25 @@ jobs:
   package:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out source
+      - name: Check out Nexus source
         uses: actions/checkout@v4
+
+      - name: Check out Kodi 21 Omega Estuary base
+        uses: actions/checkout@v4
+        with:
+          repository: xbmc/xbmc
+          ref: f8815ee40f49a700c047982d752be4b2a61420e2
+          path: upstream-kodi
+          sparse-checkout: addons/skin.estuary
+          sparse-checkout-cone-mode: true
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - name: Build and validate installable skin ZIP
-        run: python tools/package_skin.py --output dist
+      - name: Build complete Nexus skin from the Kodi 21 base
+        run: python tools/package_skin.py --base-skin upstream-kodi/addons/skin.estuary --output dist
 
       - name: Upload ZIP artifact
         uses: actions/upload-artifact@v4
