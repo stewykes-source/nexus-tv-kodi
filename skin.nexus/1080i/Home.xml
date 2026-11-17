@@ -44,7 +44,7 @@
     </control>
     <control type="label" id="9006">
       <left>162</left><top>350</top><width>1350</width><height>88</height>
-      <label>Everything you love.\nAll in one place.</label><font>NexusLogo</font><textcolor>FFFFFFFF</textcolor>
+      <label>Everything you love. All in one place.</label><font>NexusLogo</font><textcolor>FFFFFFFF</textcolor>
     </control>
     <control type="label" id="9007">
       <left>166</left><top>462</top><width>1300</width><height>42</height>
@@ -63,7 +63,7 @@
         <left>0</left><top>0</top><width>255</width><height>220</height>
         <label>LIVE TV</label><font>NexusCard</font><textcolor>FFFFFFFF</textcolor><focusedcolor>FFFFFFFF</focusedcolor>
         <texturenofocus colordiffuse="FF172A35">nexus-white.png</texturenofocus><texturefocus colordiffuse="FF205849">nexus-white.png</texturefocus>
-        <onup>SetFocus(9101)</onup><ondown>SetFocus(9101)</ondown><onright>SetFocus(9102)</onright><onleft>SetFocus(9106)</onleft>
+        <onup>SetFocus(9101)</onup><ondown>SetFocus(9200)</ondown><onright>SetFocus(9102)</onright><onleft>SetFocus(9106)</onleft>
         <onclick>ActivateWindow(Videos,"plugin://plugin.video.xstream-pro/?mode=live_menu&amp;profile_num=1")</onclick>
         <animation effect="zoom" start="100" end="103" time="120" tween="cubic" easing="out">Focus</animation>
       </control>
@@ -72,7 +72,7 @@
         <left>280</left><top>0</top><width>255</width><height>220</height>
         <label>CHANNELS</label><font>NexusCard</font><textcolor>FFFFFFFF</textcolor><focusedcolor>FFFFFFFF</focusedcolor>
         <texturenofocus colordiffuse="FF172A35">nexus-white.png</texturenofocus><texturefocus colordiffuse="FF205849">nexus-white.png</texturefocus>
-        <onup>SetFocus(9102)</onup><ondown>SetFocus(9102)</ondown><onright>SetFocus(9103)</onright><onleft>SetFocus(9101)</onleft>
+        <onup>SetFocus(9102)</onup><ondown>SetFocus(9200)</ondown><onright>SetFocus(9103)</onright><onleft>SetFocus(9101)</onleft>
         <onclick>ActivateWindow(TVChannels)</onclick>
         <animation effect="zoom" start="100" end="103" time="120" tween="cubic" easing="out">Focus</animation>
       </control>
@@ -81,7 +81,7 @@
         <left>560</left><top>0</top><width>255</width><height>220</height>
         <label>TV GUIDE</label><font>NexusCard</font><textcolor>FFFFFFFF</textcolor><focusedcolor>FFFFFFFF</focusedcolor>
         <texturenofocus colordiffuse="FF172A35">nexus-white.png</texturenofocus><texturefocus colordiffuse="FF205849">nexus-white.png</texturefocus>
-        <onup>SetFocus(9103)</onup><ondown>SetFocus(9103)</ondown><onright>SetFocus(9104)</onright><onleft>SetFocus(9102)</onleft>
+        <onup>SetFocus(9103)</onup><ondown>SetFocus(9200)</ondown><onright>SetFocus(9104)</onright><onleft>SetFocus(9102)</onleft>
         <onclick>ActivateWindow(TVGuide)</onclick>
         <animation effect="zoom" start="100" end="103" time="120" tween="cubic" easing="out">Focus</animation>
       </control>
@@ -90,7 +90,7 @@
         <left>840</left><top>0</top><width>255</width><height>220</height>
         <label>MOVIES</label><font>NexusCard</font><textcolor>FFFFFFFF</textcolor><focusedcolor>FFFFFFFF</focusedcolor>
         <texturenofocus colordiffuse="FF172A35">nexus-white.png</texturenofocus><texturefocus colordiffuse="FF205849">nexus-white.png</texturefocus>
-        <onup>SetFocus(9104)</onup><ondown>SetFocus(9104)</ondown><onright>SetFocus(9105)</onright><onleft>SetFocus(9103)</onleft>
+        <onup>SetFocus(9104)</onup><ondown>SetFocus(9200)</ondown><onright>SetFocus(9105)</onright><onleft>SetFocus(9103)</onleft>
         <onclick>ActivateWindow(Videos,"plugin://plugin.video.xstream-pro/?mode=movies_menu&amp;profile_num=1")</onclick>
         <animation effect="zoom" start="100" end="103" time="120" tween="cubic" easing="out">Focus</animation>
       </control>
@@ -99,7 +99,7 @@
         <left>1120</left><top>0</top><width>255</width><height>220</height>
         <label>TV SERIES</label><font>NexusCard</font><textcolor>FFFFFFFF</textcolor><focusedcolor>FFFFFFFF</focusedcolor>
         <texturenofocus colordiffuse="FF172A35">nexus-white.png</texturenofocus><texturefocus colordiffuse="FF205849">nexus-white.png</texturefocus>
-        <onup>SetFocus(9105)</onup><ondown>SetFocus(9105)</ondown><onright>SetFocus(9106)</onright><onleft>SetFocus(9104)</onleft>
+        <onup>SetFocus(9105)</onup><ondown>SetFocus(9200)</ondown><onright>SetFocus(9106)</onright><onleft>SetFocus(9104)</onleft>
         <onclick>ActivateWindow(Videos,"plugin://plugin.video.xstream-pro/?mode=series_menu&amp;profile_num=1")</onclick>
         <animation effect="zoom" start="100" end="103" time="120" tween="cubic" easing="out">Focus</animation>
       </control>
@@ -108,7 +108,7 @@
         <left>1400</left><top>0</top><width>255</width><height>220</height>
         <label>SEARCH</label><font>NexusCard</font><textcolor>FFFFFFFF</textcolor><focusedcolor>FFFFFFFF</focusedcolor>
         <texturenofocus colordiffuse="FF172A35">nexus-white.png</texturenofocus><texturefocus colordiffuse="FF205849">nexus-white.png</texturefocus>
-        <onup>SetFocus(9106)</onup><ondown>SetFocus(9106)</ondown><onright>SetFocus(9101)</onright><onleft>SetFocus(9105)</onleft>
+        <onup>SetFocus(9106)</onup><ondown>SetFocus(9200)</ondown><onright>SetFocus(9101)</onright><onleft>SetFocus(9105)</onleft>
         <onclick>ActivateWindow(Videos,"plugin://plugin.video.xstream-pro/?mode=search_global&amp;profile_num=1")</onclick>
         <animation effect="zoom" start="100" end="103" time="120" tween="cubic" easing="out">Focus</animation>
       </control>
