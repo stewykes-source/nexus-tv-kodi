@@ -1,3 +1,8 @@
+Nexus 0.3.4
+- Route Channels and TV Guide through Xstream Pro's own PVR entry points.
+- Let Xstream Pro validate credentials, switch its owned PVR profile, prepare channels and wait for PVR readiness before opening Kodi's native windows.
+- Preserve the user's existing Static Profile 1 setup without embedding credentials.
+
 Nexus 0.3.3
 - Make the Settings shortcut reachable with Down from the home navigation row.
 - Clean up the hero headline so it renders on one line.
@@ -5,11 +10,9 @@ Nexus 0.3.3
 Nexus 0.3.2
 - Add dedicated Channels and TV Guide tiles for Kodi's native PVR interface.
 - Expand the remote-first home row to Live TV, Channels, TV Guide, Movies, TV Series and Search.
-- Fix the featured headline so it renders as a single clean line.
 
 Nexus 0.3.1
 - Add a dedicated TV Guide tile that opens Kodi's native PVR EPG.
-- Expand the home navigation to Live TV, TV Guide, Movies, TV Series and Search.
 - Use the full Kodi 21 Omega Estuary framework as the packaged base.
 - Apply the Nexus midnight and forest-green palette across the Kodi skin.
 - Preserve native Kodi browsing, PVR, playback, dialogs and settings windows.
