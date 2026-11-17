@@ -141,11 +141,11 @@ def validate_skin(folder: Path) -> None:
     if settings.findtext("onup") != "SetFocus(9107)":
         raise SystemExit("Nexus Settings shortcut must return focus to Search.")
 
-    home_text = " ".join((node.text or "") for node in home.findall(".//label"))
+    home_xml = ET.tostring(home, encoding="unicode")
     for route in ("mode=live_menu", "mode=open_pvr", "mode=open_pvr_guide", "mode=replay_menu", "mode=movies_menu", "mode=series_menu", "mode=search_global"):
-        if route not in home_text:
+        if route not in home_xml:
             raise SystemExit(f"Missing Xstream Pro home route: {route}")
-    if "\\\\nAll in one place." in home_text:
+    if "\\nAll in one place." in home_xml:
         raise SystemExit("Hero headline contains a literal escaped newline.")
 
     for required in ("xml/Home.xml", "xml/MyVideoNav.xml", "media/nexus-white.png", "icon.png", "fanart.png", "LICENSE.txt", "LICENSE-NEXUS.txt"):
