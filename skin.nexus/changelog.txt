@@ -1,0 +1,7 @@
+Nexus TV — Changelog
+
+0.1.0
+- Initial Kodi 21 Omega skin foundation.
+- Added remote-first home navigation.
+- Added Xstream Pro Profile 1 routes for Live TV, Movies, Series and Search.
+- Added maintenance settings entry.
