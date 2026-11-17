@@ -73,7 +73,7 @@
         <label>CHANNELS</label><font>NexusCard</font><textcolor>FFFFFFFF</textcolor><focusedcolor>FFFFFFFF</focusedcolor>
         <texturenofocus colordiffuse="FF172A35">nexus-white.png</texturenofocus><texturefocus colordiffuse="FF205849">nexus-white.png</texturefocus>
         <onup>SetFocus(9102)</onup><ondown>SetFocus(9200)</ondown><onright>SetFocus(9103)</onright><onleft>SetFocus(9101)</onleft>
-        <onclick>ActivateWindow(TVChannels)</onclick>
+        <onclick>ActivateWindow(Videos,"plugin://plugin.video.xstream-pro/?mode=open_pvr")</onclick>
         <animation effect="zoom" start="100" end="103" time="120" tween="cubic" easing="out">Focus</animation>
       </control>
       <control type="button" id="9103">
@@ -82,7 +82,7 @@
         <label>TV GUIDE</label><font>NexusCard</font><textcolor>FFFFFFFF</textcolor><focusedcolor>FFFFFFFF</focusedcolor>
         <texturenofocus colordiffuse="FF172A35">nexus-white.png</texturenofocus><texturefocus colordiffuse="FF205849">nexus-white.png</texturefocus>
         <onup>SetFocus(9103)</onup><ondown>SetFocus(9200)</ondown><onright>SetFocus(9104)</onright><onleft>SetFocus(9102)</onleft>
-        <onclick>ActivateWindow(TVGuide)</onclick>
+        <onclick>ActivateWindow(Videos,"plugin://plugin.video.xstream-pro/?mode=open_pvr_guide")</onclick>
         <animation effect="zoom" start="100" end="103" time="120" tween="cubic" easing="out">Focus</animation>
       </control>
       <control type="button" id="9104">
