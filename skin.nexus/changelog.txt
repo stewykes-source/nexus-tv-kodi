@@ -1,3 +1,7 @@
+Nexus 0.3.3
+- Make the Settings shortcut reachable with Down from the home navigation row.
+- Clean up the hero headline so it renders on one line.
+
 Nexus 0.3.2
 - Add dedicated Channels and TV Guide tiles for Kodi's native PVR interface.
 - Expand the remote-first home row to Live TV, Channels, TV Guide, Movies, TV Series and Search.
