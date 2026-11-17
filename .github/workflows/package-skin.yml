@@ -67,11 +67,12 @@ jobs:
           target_commitish: ${{ github.sha }}
           name: Nexus TV v${{ steps.version.outputs.value }}
           body: |
-            Installable Nexus skin package for Kodi 21 Omega.
+            Installable Kodi 21 Omega skins for Nexus TV.
 
-            Download **skin.nexus-${{ steps.version.outputs.value }}.zip** below and install it using Kodi's Add-ons → Install from zip file.
+            - **Nexus Classic:** `skin.nexus-${{ steps.version.outputs.value }}.zip`
+            - **Nexus Glass:** `skin.nexus.glass-1.0.0.zip`
 
-            The ZIP contains the `skin.nexus/` add-on folder at its root; it is directly installable and is not a nested Actions artifact.
+            Install either ZIP using Kodi's Add-ons → Install from zip file. Each ZIP contains its own add-on folder at the archive root and can be selected under Settings → Interface → Skin.
           generate_release_notes: true
           make_latest: true
           overwrite_files: true
