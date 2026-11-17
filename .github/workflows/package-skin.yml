@@ -75,4 +75,6 @@ jobs:
           generate_release_notes: true
           make_latest: true
           overwrite_files: true
-          files: dist/skin.nexus-*.zip dist/skin.nexus.glass-*.zip
+          files: |
+            dist/skin.nexus-*.zip
+            dist/skin.nexus.glass-*.zip
