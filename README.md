@@ -30,6 +30,7 @@ The ZIP installs the skin add-on only. It does not replace the Kodi Android appl
 Nexus opens the existing Xstream Pro add-on using Profile 1 (**Static**). No server URL, username, password, or token is included in this repository.
 
 - Live TV: `plugin://plugin.video.xstream-pro/?mode=live_menu&profile_num=1`
+- TV Guide: `ActivateWindow(TVGuide)` opens Kodi's native PVR guide (requires a configured PVR client and EPG data).
 - Movies: `plugin://plugin.video.xstream-pro/?mode=movies_menu&profile_num=1`
 - Series: `plugin://plugin.video.xstream-pro/?mode=series_menu&profile_num=1`
 - Search: `plugin://plugin.video.xstream-pro/?mode=search_global&profile_num=1`
