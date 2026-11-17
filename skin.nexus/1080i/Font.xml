@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fonts>
+  <fontset id="Nexus" idloc="31000">
+    <font>
+      <name>NexusLogo</name><filename>arialbd.ttf</filename><size>58</size>
+    </font>
+    <font>
+      <name>NexusCard</name><filename>arialbd.ttf</filename><size>38</size>
+    </font>
+    <font>
+      <name>NexusSmall</name><filename>arial.ttf</filename><size>24</size>
+    </font>
+  </fontset>
+</fonts>
