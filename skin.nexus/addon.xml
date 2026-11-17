@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="skin.nexus" name="Nexus" version="0.3.6" provider-name="stewykes-source">
+<addon id="skin.nexus" name="Nexus" version="0.4.0" provider-name="stewykes-source">
   <requires>
     <import addon="xbmc.gui" version="5.17.0"/>
   </requires>
@@ -8,7 +8,7 @@
   </extension>
   <extension point="xbmc.addon.metadata">
     <summary lang="en_GB">Nexus TV — an Apple TV-inspired Kodi interface</summary>
-    <description lang="en_GB">A cinematic, remote-first Kodi skin built on the Kodi 21 Estuary framework. Playback, add-ons, PVR and dialogs remain native Kodi features.</description>
+    <description lang="en_GB">A cinematic, remote-first Kodi skin with an amber-wave Nexus home screen, glass-style navigation and native Kodi playback, add-ons, PVR and dialogs.</description>
     <platform>all</platform>
     <license>GPL-2.0-or-later; Nexus custom artwork and additions MIT</license>
     <source>https://github.com/stewykes-source/nexus-tv-kodi</source>
