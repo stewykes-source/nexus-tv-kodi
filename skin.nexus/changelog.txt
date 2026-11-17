@@ -1,7 +1,9 @@
-Nexus TV — Changelog
+Nexus 0.2.0
+- Introduce a refreshed cinematic home layout.
+- Add four direct Xstream Pro entry points for the existing Static profile.
+- Add remote-focus feedback and a safe Kodi Settings route.
+- Keep Kodi responsible for playback; no provider credentials are bundled.
 
-0.1.0
-- Initial Kodi 21 Omega skin foundation.
-- Added remote-first home navigation.
-- Added Xstream Pro Profile 1 routes for Live TV, Movies, Series and Search.
-- Added maintenance settings entry.
+Nexus 0.1.1
+- Establish the Kodi 21 skin manifest and initial home navigation.
+- Add automated XML validation and ZIP packaging.
