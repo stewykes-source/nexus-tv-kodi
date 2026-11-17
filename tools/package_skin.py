@@ -57,28 +57,30 @@ def create_brand_assets(folder: Path) -> None:
     write_png(folder / "fanart.png", 1920, 1080, fanart_pixel)
 
 
-def merge_xml(base_file: Path, custom_file: Path, child_tag: str, filter_names: set[str] | None = None) -> None:
+def merge_xml(base_file: Path, custom_file: Path, child_tag: str, overwrite: bool = False) -> None:
     base_root = ET.parse(base_file).getroot()
     custom_root = ET.parse(custom_file).getroot()
     if base_root.tag != custom_root.tag:
         raise SystemExit(f"Cannot merge {custom_file}: root tag differs from {base_file}")
-    existing = set()
-    for child in base_root.findall(child_tag):
+    existing = {}
+    for index, child in enumerate(list(base_root.findall(child_tag))):
         name = child.findtext("name") or child.attrib.get("name")
         if name:
-            existing.add(name)
+            existing[name] = (index, child)
     for child in custom_root.findall(child_tag):
         name = child.findtext("name") or child.attrib.get("name")
-        if filter_names and name not in filter_names:
-            continue
         if name and name in existing:
+            if overwrite:
+                index, old = existing[name]
+                base_root.remove(old)
+                base_root.insert(index, child)
+                existing[name] = (index, child)
             continue
         base_root.append(child)
         if name:
-            existing.add(name)
+            existing[name] = (len(base_root) - 1, child)
     ET.indent(base_root, space="  ")
     base_file.write_text('<?xml version="1.0" encoding="UTF-8"?>\n' + ET.tostring(base_root, encoding="unicode") + "\n", encoding="utf-8")
-
 
 def merge_fonts(base_file: Path, custom_file: Path) -> None:
     base_root = ET.parse(base_file).getroot()
@@ -150,7 +152,7 @@ def main() -> None:
         base_colors = staging / "colors" / "defaults.xml"
         custom_colors = SKIN / "colors" / "defaults.xml"
         if base_colors.exists() and custom_colors.exists():
-            merge_xml(base_colors, custom_colors, "color")
+            merge_xml(base_colors, custom_colors, "color", overwrite=True)
 
         # Retain Estuary's complete include graph and append Nexus-specific includes.
         base_includes = staging / "xml" / "Includes.xml"
