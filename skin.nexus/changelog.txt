@@ -1,3 +1,8 @@
+Nexus 0.3.2
+- Add dedicated Channels and TV Guide tiles for Kodi's native PVR interface.
+- Expand the remote-first home row to Live TV, Channels, TV Guide, Movies, TV Series and Search.
+- Fix the featured headline so it renders as a single clean line.
+
 Nexus 0.3.1
 - Add a dedicated TV Guide tile that opens Kodi's native PVR EPG.
 - Expand the home navigation to Live TV, TV Guide, Movies, TV Series and Search.
