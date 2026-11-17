@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<colors>
+  <color name="white">ffffffff</color>
+  <color name="NexusBackground">ff080b12</color>
+  <color name="NexusPanel">ff172332</color>
+  <color name="NexusAccent">ff1c554a</color>
+  <color name="NexusMuted">ff9ba8b8</color>
+</colors>
