@@ -25,6 +25,12 @@ The existing Xstream Pro add-on is opened using Profile 1 (**Static**). Nexus do
 
 The ZIP installs the skin add-on only. It does not replace the Kodi Android application or create a standalone APK. A branded Fire OS APK is a separate packaging milestone and must bundle Kodi itself.
 
+## Optional Nexus Glass variant
+
+The repository also builds **Nexus Glass** as a separate Kodi skin add-on. It adapts the navy, teal/violet lighting, cinematic shelf and frosted-glass direction of CleanYourTV's Glass theme (by matheus-caldeira) for Kodi's skin framework. The CleanYourTV launcher JSON is not directly compatible with Kodi; this is a Kodi-native implementation with original generated wallpaper artwork. See [themes/glass/README.md](themes/glass/README.md) for details and attribution.
+
+Install the permanent **skin.nexus.glass-1.0.0.zip** from [GitHub Releases](https://github.com/stewykes-source/nexus-tv-kodi/releases/latest) using **Add-ons → Install from zip file**, then select **Nexus Glass** under **Settings → Interface → Skin**. The original **Nexus** skin remains installed and selectable as the classic alternative. Both skins retain the same Kodi playback and Xstream Pro integration.
+
 ## Xstream Pro integration
 
 Nexus opens the existing Xstream Pro add-on using Profile 1 (**Static**). No server URL, username, password, or token is included in this repository.
