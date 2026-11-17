@@ -36,10 +36,14 @@ jobs:
       - name: Build complete Nexus skin from the Kodi 21 base
         run: python tools/package_skin.py --base-skin upstream-kodi/addons/skin.estuary --output dist
 
-      - name: Prepare directly installable Kodi ZIP artifact
+      - name: Build the optional Nexus Glass variant
+        run: python tools/package_glass.py --base-skin upstream-kodi/addons/skin.estuary --output dist
+
+      - name: Prepare directly installable Kodi ZIP artifacts
         run: |
-          mkdir -p dist/installable
-          unzip -q dist/skin.nexus-*.zip -d dist/installable
+          mkdir -p dist/installable/classic dist/installable/glass
+          unzip -q dist/skin.nexus-*.zip -d dist/installable/classic
+          unzip -q dist/skin.nexus.glass-*.zip -d dist/installable/glass
 
       - name: Upload directly installable skin
         uses: actions/upload-artifact@v4
@@ -71,4 +75,4 @@ jobs:
           generate_release_notes: true
           make_latest: true
           overwrite_files: true
-          files: dist/skin.nexus-*.zip
+          files: dist/skin.nexus-*.zip dist/skin.nexus.glass-*.zip
