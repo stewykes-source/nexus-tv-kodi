@@ -36,11 +36,16 @@ jobs:
       - name: Build complete Nexus skin from the Kodi 21 base
         run: python tools/package_skin.py --base-skin upstream-kodi/addons/skin.estuary --output dist
 
-      - name: Upload ZIP artifact
+      - name: Prepare directly installable Kodi ZIP artifact
+        run: |
+          mkdir -p dist/installable
+          unzip -q dist/skin.nexus-*.zip -d dist/installable
+
+      - name: Upload directly installable skin
         uses: actions/upload-artifact@v4
         with:
           name: nexus-kodi-skin
-          path: dist/skin.nexus-*.zip
+          path: dist/installable/**
           if-no-files-found: error
           retention-days: 30
 
