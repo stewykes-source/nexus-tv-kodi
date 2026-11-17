@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <colors>
-  <color name="white">FFFFFFFF</color>
-  <color name="background">FF080B12</color>
-  <color name="primary_background">FF10252B</color>
-  <color name="secondary_background">332C806D</color>
-  <color name="button_focus">FF205849</color>
-  <color name="button_alt_focus">80205849</color>
-  <color name="selected">FF6DD5B7</color>
-  <color name="blue">FF6DD5B7</color>
-  <color name="NexusBackground">FF080B12</color>
-  <color name="NexusPanel">FF172332</color>
-  <color name="NexusAccent">FF1C554A</color>
-  <color name="NexusMuted">FF9BA8B8</color>
+  <color name="white">FFFFFFFF</color><color name="background">FF09090C</color>
+  <color name="primary_background">FF211D20</color><color name="secondary_background">552D2424</color>
+  <color name="button_focus">FFFF9A36</color><color name="button_alt_focus">CCFF861F</color>
+  <color name="selected">FFFFB35D</color><color name="blue">FF5AA8FF</color>
+  <color name="NexusBackground">FF09090C</color><color name="NexusPanel">D91B1B20</color>
+  <color name="NexusAccent">FFFF861F</color><color name="NexusMuted">FFB9B1AC</color>
+  <color name="NexusPurple">FFB06BDC</color>
 </colors>
