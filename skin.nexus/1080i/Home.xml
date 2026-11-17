@@ -4,47 +4,282 @@
   <backgroundcolor>FF09090C</backgroundcolor>
   <animation effect="fade" time="260">WindowOpen</animation>
   <controls>
-    <control type="image"><left>0</left><top>0</top><width>1920</width><height>1080</height><texture>nexus-background.png</texture></control>
-    <control type="image"><left>0</left><top>0</top><width>1920</width><height>1080</height><texture colordiffuse="55000000">nexus-white.png</texture></control>
-    <control type="label" id="9001"><left>112</left><top>68</top><width>620</width><height>112</height><label>Nexus</label><font>NexusLogo</font><textcolor>FFFFFFFF</textcolor></control>
-    <control type="label" id="9002"><left>1430</left><top>88</top><width>378</width><height>42</height><label>$INFO[System.Date]  •  $INFO[System.Time]</label><font>NexusSmall</font><textcolor>FFE8E4E0</textcolor><align>right</align></control>
-    <control type="image"><left>930</left><top>0</top><width>60</width><height>5</height><texture colordiffuse="99FFFFFF">nexus-white.png</texture></control>
-    <control type="image"><left>250</left><top>610</top><width>1420</width><height>330</height><texture colordiffuse="D91B1B20">nexus-white.png</texture></control>
-    <control type="image"><left>250</left><top>610</top><width>1420</width><height>5</height><texture colordiffuse="55FFFFFF">nexus-white.png</texture></control>
+    <!-- Background Artwork -->
+    <control type="image">
+      <left>0</left><top>0</top><width>1920</width><height>1080</height>
+      <texture>nexus-background.png</texture>
+      <aspectratio>scale</aspectratio>
+    </control>
+    <!-- Subtle lower vignette for contrast -->
+    <control type="image">
+      <left>0</left><top>480</top><width>1920</width><height>600</height>
+      <texture colordiffuse="70000000">nexus-white.png</texture>
+    </control>
+
+    <!-- Header: Logo & Chevron -->
+    <control type="label" id="9001">
+      <left>112</left><top>64</top><width>620</width><height>80</height>
+      <label>Nexus</label><font>NexusLogo</font><textcolor>FFFFFFFF</textcolor>
+    </control>
+    <control type="image">
+      <left>940</left><top>24</top><width>40</width><height>16</height>
+      <texture colordiffuse="99FFFFFF">nexus-white.png</texture>
+    </control>
+
+    <!-- Header: Clock & Date -->
+    <control type="label" id="9002">
+      <left>1420</left><top>72</top><width>388</width><height>42</height>
+      <label>$INFO[System.Date(DDD)]  •  $INFO[System.Time(hh:mm xx)]</label>
+      <font>NexusSmall</font><textcolor>FFE8E4E0</textcolor><align>right</align>
+    </control>
+
+    <!-- Top Shelf Contextual Panel (Dynamic based on focused section) -->
+    <control type="group" id="9050">
+      <left>112</left><top>200</top><width>1696</width><height>300</height>
+
+      <!-- Glass shelf backdrop -->
+      <control type="image">
+        <left>0</left><top>0</top><width>1696</width><height>300</height>
+        <texture border="24" colordiffuse="D9141822">dock-capsule.png</texture>
+      </control>
+
+      <!-- Live TV / Channels Info (Visible when 9101, 9104, or 9105 is focused) -->
+      <control type="group">
+        <visible>Control.HasFocus(9101) | Control.HasFocus(9104) | Control.HasFocus(9105)</visible>
+        <animation effect="fade" time="180">VisibleChange</animation>
+        <control type="label">
+          <left>48</left><top>34</top><width>1200</width><height>32</height>
+          <label>LIVE TELEVISION &amp; CHANNELS</label><font>NexusSmall</font><textcolor>FFFF902A</textcolor>
+        </control>
+        <control type="label">
+          <left>48</left><top>72</top><width>1400</width><height>56</height>
+          <label>Watch Live Broadcasts and Check Schedules</label><font>NexusLogo</font><textcolor>FFFFFFFF</textcolor>
+        </control>
+        <control type="label">
+          <left>48</left><top>140</top><width>1400</width><height>42</height>
+          <label>Instant access to your IPTV channels, native EPG grid, and replay guide.</label><font>NexusCard</font><textcolor>FFCBD3DC</textcolor>
+        </control>
+        <control type="label">
+          <left>48</left><top>206</top><width>800</width><height>34</height>
+          <label>● Xstream Pro Static  •  Full EPG Timeline</label><font>NexusSmall</font><textcolor>FF9BA8B8</textcolor>
+        </control>
+      </control>
+
+      <!-- Movies Info (Visible when 9102 is focused) -->
+      <control type="group">
+        <visible>Control.HasFocus(9102)</visible>
+        <animation effect="fade" time="180">VisibleChange</animation>
+        <control type="label">
+          <left>48</left><top>34</top><width>1200</width><height>32</height>
+          <label>FEATURE FILMS &amp; VOD</label><font>NexusSmall</font><textcolor>FFFF902A</textcolor>
+        </control>
+        <control type="label">
+          <left>48</left><top>72</top><width>1400</width><height>56</height>
+          <label>Browse High-Definition On-Demand Movies</label><font>NexusLogo</font><textcolor>FFFFFFFF</textcolor>
+        </control>
+        <control type="label">
+          <left>48</left><top>140</top><width>1400</width><height>42</height>
+          <label>Explore blockbusters, recent additions, and your curated cinema catalogue.</label><font>NexusCard</font><textcolor>FFCBD3DC</textcolor>
+        </control>
+        <control type="label">
+          <left>48</left><top>206</top><width>800</width><height>34</height>
+          <label>● Xstream Pro Static  •  Movies Library</label><font>NexusSmall</font><textcolor>FF9BA8B8</textcolor>
+        </control>
+      </control>
+
+      <!-- TV Series Info (Visible when 9103 is focused) -->
+      <control type="group">
+        <visible>Control.HasFocus(9103)</visible>
+        <animation effect="fade" time="180">VisibleChange</animation>
+        <control type="label">
+          <left>48</left><top>34</top><width>1200</width><height>32</height>
+          <label>TELEVISION SERIES &amp; BOXSETS</label><font>NexusSmall</font><textcolor>FFFF902A</textcolor>
+        </control>
+        <control type="label">
+          <left>48</left><top>72</top><width>1400</width><height>56</height>
+          <label>Multi-Season Shows, Episodes and Miniseries</label><font>NexusLogo</font><textcolor>FFFFFFFF</textcolor>
+        </control>
+        <control type="label">
+          <left>48</left><top>140</top><width>1400</width><height>42</height>
+          <label>Binge your favorite television shows with full season and episode tracking.</label><font>NexusCard</font><textcolor>FFCBD3DC</textcolor>
+        </control>
+        <control type="label">
+          <left>48</left><top>206</top><width>800</width><height>34</height>
+          <label>● Xstream Pro Static  •  Series Library</label><font>NexusSmall</font><textcolor>FF9BA8B8</textcolor>
+        </control>
+      </control>
+
+      <!-- Catch Up / Search / Settings Info -->
+      <control type="group">
+        <visible>Control.HasFocus(9106) | Control.HasFocus(9107) | Control.HasFocus(9200)</visible>
+        <animation effect="fade" time="180">VisibleChange</animation>
+        <control type="label">
+          <left>48</left><top>34</top><width>1200</width><height>32</height>
+          <label>SYSTEM &amp; DISCOVERY</label><font>NexusSmall</font><textcolor>FFFF902A</textcolor>
+        </control>
+        <control type="label">
+          <left>48</left><top>72</top><width>1400</width><height>56</height>
+          <label>Catch Up Replay, Global Search and Preferences</label><font>NexusLogo</font><textcolor>FFFFFFFF</textcolor>
+        </control>
+        <control type="label">
+          <left>48</left><top>140</top><width>1400</width><height>42</height>
+          <label>Find specific titles, review past broadcasts, and manage interface options.</label><font>NexusCard</font><textcolor>FFCBD3DC</textcolor>
+        </control>
+        <control type="label">
+          <left>48</left><top>206</top><width>800</width><height>34</height>
+          <label>● Kodi Media Center  •  Xstream Pro</label><font>NexusSmall</font><textcolor>FF9BA8B8</textcolor>
+        </control>
+      </control>
+    </control>
+
+    <!-- Main Navigation Dock (Floating Frosted Glass Capsule) -->
+    <control type="image">
+      <left>220</left><top>575</top><width>1480</width><height>270</height>
+      <texture border="28">dock-capsule.png</texture>
+    </control>
+
+    <!-- Hero Card 1: Live TV -->
     <control type="button" id="9101">
-      <description>Open Live TV in Xstream Pro profile Static</description><left>350</left><top>654</top><width>360</width><height>238</height>
-      <label>LIVE TV</label><font>NexusCard</font><textcolor>FFFFFFFF</textcolor><focusedcolor>FFFFFFFF</focusedcolor>
-      <texturenofocus colordiffuse="FFFF861F">nexus-white.png</texturenofocus><texturefocus colordiffuse="FFFF9A36">nexus-white.png</texturefocus>
-      <onup>SetFocus(9101)</onup><ondown>SetFocus(9200)</ondown><onright>SetFocus(9102)</onright><onleft>SetFocus(9103)</onleft>
+      <description>Open Live TV menu</description>
+      <left>255</left><top>600</top><width>440</width><height>220</height>
+      <label>Live TV</label><font>NexusCard</font><textcolor>FFFFFFFF</textcolor><focusedcolor>FFFFFFFF</focusedcolor>
+      <align>center</align><aligny>bottom</aligny>
+      <textoffsety>24</textoffsety>
+      <texturenofocus border="24">card-nofocus.png</texturenofocus>
+      <texturefocus border="24">card-focus.png</texturefocus>
+      <onup>SetFocus(9101)</onup><ondown>SetFocus(9104)</ondown>
+      <onleft>SetFocus(9103)</onleft><onright>SetFocus(9102)</onright>
       <onclick>ActivateWindow(Videos,"plugin://plugin.video.xstream-pro/?mode=live_menu&amp;profile_num=1")</onclick>
-      <animation effect="zoom" start="100" end="103" time="130" tween="cubic" easing="out">Focus</animation>
+      <animation effect="zoom" start="100" end="103" center="auto" time="120" tween="cubic" easing="out">Focus</animation>
     </control>
+    <control type="image">
+      <left>415</left><top>636</top><width>120</width><height>60</height>
+      <texture>icon-livetv.png</texture>
+      <aspectratio>keep</aspectratio>
+    </control>
+
+    <!-- Hero Card 2: Movies -->
     <control type="button" id="9102">
-      <description>Open Movies in Xstream Pro profile Static</description><left>780</left><top>654</top><width>360</width><height>238</height>
-      <label>MOVIES</label><font>NexusCard</font><textcolor>FFFFFFFF</textcolor><focusedcolor>FFFFFFFF</focusedcolor>
-      <texturenofocus colordiffuse="FF24242A">nexus-white.png</texturenofocus><texturefocus colordiffuse="FF48434A">nexus-white.png</texturefocus>
-      <onup>SetFocus(9102)</onup><ondown>SetFocus(9200)</ondown><onright>SetFocus(9103)</onright><onleft>SetFocus(9101)</onleft>
+      <description>Open Movies menu</description>
+      <left>740</left><top>600</top><width>440</width><height>220</height>
+      <label>Movies</label><font>NexusCard</font><textcolor>FFFFFFFF</textcolor><focusedcolor>FFFFFFFF</focusedcolor>
+      <align>center</align><aligny>bottom</aligny>
+      <textoffsety>24</textoffsety>
+      <texturenofocus border="24">card-nofocus.png</texturenofocus>
+      <texturefocus border="24">card-focus.png</texturefocus>
+      <onup>SetFocus(9102)</onup><ondown>SetFocus(9105)</ondown>
+      <onleft>SetFocus(9101)</onleft><onright>SetFocus(9103)</onright>
       <onclick>ActivateWindow(Videos,"plugin://plugin.video.xstream-pro/?mode=movies_menu&amp;profile_num=1")</onclick>
-      <animation effect="zoom" start="100" end="103" time="130" tween="cubic" easing="out">Focus</animation>
+      <animation effect="zoom" start="100" end="103" center="auto" time="120" tween="cubic" easing="out">Focus</animation>
     </control>
+    <control type="image">
+      <left>900</left><top>636</top><width>120</width><height>60</height>
+      <texture>icon-movies.png</texture>
+      <aspectratio>keep</aspectratio>
+    </control>
+
+    <!-- Hero Card 3: TV Series -->
     <control type="button" id="9103">
-      <description>Open TV Series in Xstream Pro profile Static</description><left>1210</left><top>654</top><width>360</width><height>238</height>
-      <label>TV SERIES</label><font>NexusCard</font><textcolor>FFFFFFFF</textcolor><focusedcolor>FFFFFFFF</focusedcolor>
-      <texturenofocus colordiffuse="FF9C62C5">nexus-white.png</texturenofocus><texturefocus colordiffuse="FFB77BE0">nexus-white.png</texturefocus>
-      <onup>SetFocus(9103)</onup><ondown>SetFocus(9200)</ondown><onright>SetFocus(9101)</onright><onleft>SetFocus(9102)</onleft>
+      <description>Open Series menu</description>
+      <left>1225</left><top>600</top><width>440</width><height>220</height>
+      <label>TV Series</label><font>NexusCard</font><textcolor>FFFFFFFF</textcolor><focusedcolor>FFFFFFFF</focusedcolor>
+      <align>center</align><aligny>bottom</aligny>
+      <textoffsety>24</textoffsety>
+      <texturenofocus border="24">card-nofocus.png</texturenofocus>
+      <texturefocus border="24">card-focus.png</texturefocus>
+      <onup>SetFocus(9103)</onup><ondown>SetFocus(9106)</ondown>
+      <onleft>SetFocus(9102)</onleft><onright>SetFocus(9101)</onright>
       <onclick>ActivateWindow(Videos,"plugin://plugin.video.xstream-pro/?mode=series_menu&amp;profile_num=1")</onclick>
-      <animation effect="zoom" start="100" end="103" time="130" tween="cubic" easing="out">Focus</animation>
+      <animation effect="zoom" start="100" end="103" center="auto" time="120" tween="cubic" easing="out">Focus</animation>
     </control>
-    <control type="image"><left>760</left><top>966</top><width>56</width><height>7</height><texture colordiffuse="FFFFD24A">nexus-white.png</texture></control>
-    <control type="image"><left>832</left><top>966</top><width>56</width><height>7</height><texture colordiffuse="FFFF5A6B">nexus-white.png</texture></control>
-    <control type="image"><left>904</left><top>966</top><width>56</width><height>7</height><texture colordiffuse="FF5AA8FF">nexus-white.png</texture></control>
-    <control type="image"><left>976</left><top>966</top><width>56</width><height>7</height><texture colordiffuse="FF5FE07D">nexus-white.png</texture></control>
-    <control type="image"><left>1048</left><top>966</top><width>56</width><height>7</height><texture colordiffuse="FFD57BFF">nexus-white.png</texture></control>
-    <control type="label" id="9003"><left>112</left><top>1000</top><width>900</width><height>36</height><label>SELECT TO EXPLORE  •  POWERED BY KODI</label><font>NexusSmall</font><textcolor>FFB9B1AC</textcolor></control>
-    <control type="button" id="9200">
-      <left>1540</left><top>988</top><width>268</width><height>62</height><label>SETTINGS</label><font>NexusSmall</font><textcolor>FFE8E4E0</textcolor><focusedcolor>FFFFFFFF</focusedcolor>
-      <texturenofocus colordiffuse="66202024">nexus-white.png</texturenofocus><texturefocus colordiffuse="CCFF861F">nexus-white.png</texturefocus>
-      <onup>SetFocus(9102)</onup><ondown>SetFocus(9101)</ondown><onleft>SetFocus(9103)</onleft><onright>SetFocus(9101)</onright><onclick>ActivateWindow(Settings)</onclick>
+    <control type="image">
+      <left>1385</left><top>636</top><width>120</width><height>60</height>
+      <texture>icon-series.png</texture>
+      <aspectratio>keep</aspectratio>
+    </control>
+
+    <!-- Neon reflection bars under the dock -->
+    <control type="image"><left>760</left><top>865</top><width>64</width><height>12</height><texture>neon-orange.png</texture></control>
+    <control type="image"><left>840</left><top>865</top><width>64</width><height>12</height><texture>neon-red.png</texture></control>
+    <control type="image"><left>920</left><top>865</top><width>64</width><height>12</height><texture>neon-blue.png</texture></control>
+    <control type="image"><left>1000</left><top>865</top><width>64</width><height>12</height><texture>neon-green.png</texture></control>
+    <control type="image"><left>1080</left><top>865</top><width>64</width><height>12</height><texture>neon-purple.png</texture></control>
+
+    <!-- Secondary Quick Access Pill Navigation Bar -->
+    <control type="group" id="9150">
+      <left>280</left><top>915</top><width>1360</width><height>60</height>
+
+      <!-- TV Guide (9104) -->
+      <control type="button" id="9104">
+        <description>Open PVR TV Guide</description>
+        <left>0</left><top>0</top><width>240</width><height>52</height>
+        <label>TV GUIDE</label><font>NexusSmall</font><textcolor>FFCBD3DC</textcolor><focusedcolor>FFFFFFFF</focusedcolor>
+        <texturenofocus border="16">subpill-nofocus.png</texturenofocus>
+        <texturefocus border="16">subpill-focus.png</texturefocus>
+        <onup>SetFocus(9101)</onup><ondown>SetFocus(9104)</ondown>
+        <onleft>SetFocus(9200)</onleft><onright>SetFocus(9105)</onright>
+        <onclick>ActivateWindow(Videos,"plugin://plugin.video.xstream-pro/?mode=open_pvr_guide")</onclick>
+        <animation effect="zoom" start="100" end="104" center="auto" time="100">Focus</animation>
+      </control>
+
+      <!-- Channels (9105) -->
+      <control type="button" id="9105">
+        <description>Open PVR Channel List</description>
+        <left>270</left><top>0</top><width>240</width><height>52</height>
+        <label>CHANNELS</label><font>NexusSmall</font><textcolor>FFCBD3DC</textcolor><focusedcolor>FFFFFFFF</focusedcolor>
+        <texturenofocus border="16">subpill-nofocus.png</texturenofocus>
+        <texturefocus border="16">subpill-focus.png</texturefocus>
+        <onup>SetFocus(9101)</onup><ondown>SetFocus(9105)</ondown>
+        <onleft>SetFocus(9104)</onleft><onright>SetFocus(9106)</onright>
+        <onclick>ActivateWindow(Videos,"plugin://plugin.video.xstream-pro/?mode=open_pvr")</onclick>
+        <animation effect="zoom" start="100" end="104" center="auto" time="100">Focus</animation>
+      </control>
+
+      <!-- Catch Up (9106) -->
+      <control type="button" id="9106">
+        <description>Open Catch Up replay menu</description>
+        <left>540</left><top>0</top><width>240</width><height>52</height>
+        <label>CATCH UP</label><font>NexusSmall</font><textcolor>FFCBD3DC</textcolor><focusedcolor>FFFFFFFF</focusedcolor>
+        <texturenofocus border="16">subpill-nofocus.png</texturenofocus>
+        <texturefocus border="16">subpill-focus.png</texturefocus>
+        <onup>SetFocus(9102)</onup><ondown>SetFocus(9106)</ondown>
+        <onleft>SetFocus(9105)</onleft><onright>SetFocus(9107)</onright>
+        <onclick>ActivateWindow(Videos,"plugin://plugin.video.xstream-pro/?mode=replay_menu&amp;profile_num=1")</onclick>
+        <animation effect="zoom" start="100" end="104" center="auto" time="100">Focus</animation>
+      </control>
+
+      <!-- Search (9107) -->
+      <control type="button" id="9107">
+        <description>Open Global Search</description>
+        <left>810</left><top>0</top><width>240</width><height>52</height>
+        <label>SEARCH</label><font>NexusSmall</font><textcolor>FFCBD3DC</textcolor><focusedcolor>FFFFFFFF</focusedcolor>
+        <texturenofocus border="16">subpill-nofocus.png</texturenofocus>
+        <texturefocus border="16">subpill-focus.png</texturefocus>
+        <onup>SetFocus(9103)</onup><ondown>SetFocus(9107)</ondown>
+        <onleft>SetFocus(9106)</onleft><onright>SetFocus(9200)</onright>
+        <onclick>ActivateWindow(Videos,"plugin://plugin.video.xstream-pro/?mode=search_global&amp;profile_num=1")</onclick>
+        <animation effect="zoom" start="100" end="104" center="auto" time="100">Focus</animation>
+      </control>
+
+      <!-- Settings (9200) -->
+      <control type="button" id="9200">
+        <description>Open Kodi Settings</description>
+        <left>1080</left><top>0</top><width>240</width><height>52</height>
+        <label>SETTINGS</label><font>NexusSmall</font><textcolor>FFCBD3DC</textcolor><focusedcolor>FFFFFFFF</focusedcolor>
+        <texturenofocus border="16">subpill-nofocus.png</texturenofocus>
+        <texturefocus border="16">subpill-focus.png</texturefocus>
+        <onup>SetFocus(9107)</onup><ondown>SetFocus(9200)</ondown>
+        <onleft>SetFocus(9107)</onleft><onright>SetFocus(9104)</onright>
+        <onclick>ActivateWindow(Settings)</onclick>
+        <animation effect="zoom" start="100" end="104" center="auto" time="100">Focus</animation>
+      </control>
+    </control>
+
+    <!-- Subtle Footer Info -->
+    <control type="label" id="9003">
+      <left>112</left><top>1010</top><width>1696</width><height>30</height>
+      <label>Press D-Pad Up or Down to Navigate  •  Select to Launch  •  Xstream Pro Profile 1</label>
+      <font>NexusSmall</font><textcolor>FF7A8494</textcolor><align>center</align>
     </control>
   </controls>
 </window>
