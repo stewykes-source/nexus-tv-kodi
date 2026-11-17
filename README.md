@@ -4,7 +4,9 @@ Nexus is an Apple TV-inspired, remote-first Kodi skin for Fire TV and Android TV
 
 ## Project direction
 
-Kodi remains the playback engine. Nexus replaces the home-screen experience while preserving compatible Kodi add-ons, including the existing Xstream Pro installation. Nexus does not store IPTV credentials or make provider API calls itself.
+Kodi remains the playback engine. Nexus replaces the home-screen experience while retaining Kodi's established window, dialog, media browsing, playback and PVR framework. The current package is based on the Kodi 21 Omega Estuary skin source pinned to commit `f8815ee40f49a700c047982d752be4b2a61420e2`, with Nexus branding and home screen layered over it.
+
+The existing Xstream Pro add-on is opened using Profile 1 (**Static**). Nexus does not store IPTV credentials or make provider API calls itself.
 
 ### Target compatibility
 
@@ -25,27 +27,33 @@ The ZIP installs the skin add-on only. It does not replace the Kodi Android appl
 
 ## Xstream Pro integration
 
-Nexus opens the user's existing Xstream Pro add-on using Profile 1 (**Static**). No server URL, username, password, or token is included in this repository.
+Nexus opens the existing Xstream Pro add-on using Profile 1 (**Static**). No server URL, username, password, or token is included in this repository.
 
 - Live TV: `plugin://plugin.video.xstream-pro/?mode=live_menu&profile_num=1`
 - Movies: `plugin://plugin.video.xstream-pro/?mode=movies_menu&profile_num=1`
 - Series: `plugin://plugin.video.xstream-pro/?mode=series_menu&profile_num=1`
 - Search: `plugin://plugin.video.xstream-pro/?mode=search_global&profile_num=1`
 
-## Build locally
+## Build
 
-Python 3.10+ is sufficient; the packager uses only the Python standard library.
+The GitHub Actions workflow checks out the pinned Kodi 21 Estuary source, overlays Nexus files, validates the full XML tree and packages `dist/skin.nexus-<version>.zip`.
+
+For a local build, check out the pinned Kodi source into `upstream-kodi` and run:
 
 ```bash
-python tools/package_skin.py --output dist
+python tools/package_skin.py --base-skin upstream-kodi/addons/skin.estuary --output dist
 ```
 
-The build validates XML and required Kodi font/texture definitions, generates Nexus artwork and creates `dist/skin.nexus-<version>.zip`. GitHub Actions runs the same build on pushes to `main` and publishes a GitHub Release when a `v*` tag is pushed.
+## Licensing and attribution
+
+The Kodi Estuary base is distributed under its upstream licences. Its original `LICENSE.txt` and all upstream source/assets are retained in the package. Nexus-specific additions and branding are separately identified in `LICENSE-NEXUS.txt`.
 
 ## Development notes
 
-- Skin XML lives in `skin.nexus/1080i/`.
-- Palette definitions live in `skin.nexus/colors/defaults.xml`.
+- Nexus home-screen source: `skin.nexus/1080i/Home.xml`.
+- Nexus font additions: `skin.nexus/1080i/Font.xml`.
+- Nexus palette additions: `skin.nexus/colors/defaults.xml`.
+- Kodi 21 Estuary source is pinned in `.github/workflows/package-skin.yml`.
 - Do not commit provider credentials, account tokens, or private IPTV URLs.
 - A successful ZIP build is not the same as a successful runtime test. Test the skin in Kodi 21 on Windows first, then Fire OS.
 
