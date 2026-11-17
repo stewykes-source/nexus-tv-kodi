@@ -32,6 +32,7 @@ Nexus opens the existing Xstream Pro add-on using Profile 1 (**Static**). No ser
 - Live TV: `plugin://plugin.video.xstream-pro/?mode=live_menu&profile_num=1`
 - Channels: `plugin://plugin.video.xstream-pro/?mode=open_pvr` asks Xstream Pro to prepare its owned PVR instance, verify channels and then open Kodi TV Channels.
 - TV Guide: `plugin://plugin.video.xstream-pro/?mode=open_pvr_guide` asks Xstream Pro to verify its owned PVR instance and open Kodi's native EPG.
+- Catch Up: `plugin://plugin.video.xstream-pro/?mode=replay_menu&profile_num=1` opens the existing Static profile's replay catalogue.
 - Movies: `plugin://plugin.video.xstream-pro/?mode=movies_menu&profile_num=1`
 - Series: `plugin://plugin.video.xstream-pro/?mode=series_menu&profile_num=1`
 - Search: `plugin://plugin.video.xstream-pro/?mode=search_global&profile_num=1`
