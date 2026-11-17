@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window id="0">
+  <defaultcontrol>9100</defaultcontrol>
+  <backgroundcolor>FF080B12</backgroundcolor>
+  <controls>
+    <control type="image">
+      <description>Deep navy background</description>
+      <left>0</left><top>0</top><width>1920</width><height>1080</height>
+      <texture colordiffuse="FF080B12">white.png</texture>
+    </control>
+    <control type="image">
+      <description>Ambient top glow</description>
+      <left>0</left><top>0</top><width>1920</width><height>520</height>
+      <texture colordiffuse="182D9B83">white.png</texture>
+    </control>
+    <control type="label" id="9001">
+      <left>112</left><top>74</top><width>500</width><height>72</height>
+      <label>NEXUS</label><font>NexusLogo</font><textcolor>FFFFFFFF</textcolor>
+    </control>
+    <control type="label" id="9002">
+      <left>116</left><top>146</top><width>760</width><height>42</height>
+      <label>Your entertainment, beautifully organised.</label><font>NexusSmall</font><textcolor>FF9BA8B8</textcolor>
+    </control>
+    <control type="group" id="9100">
+      <left>112</left><top>330</top><width>1696</width><height>500</height>
+      <control type="button" id="9101">
+        <description>Live TV</description><left>0</left><top>0</top><width>390</width><height>300</height>
+        <label>Live TV</label><font>NexusCard</font><textcolor>FFFFFFFF</textcolor><focusedcolor>FFFFFFFF</focusedcolor>
+        <texturenofocus colordiffuse="FF172332">white.png</texturenofocus>
+        <texturefocus colordiffuse="FF1C554A">white.png</texturefocus>
+        <onup>SetFocus(9105)</onup><ondown>SetFocus(9102)</ondown><onright>SetFocus(9102)</onright><onleft>SetFocus(9104)</onleft>
+        <onclick>ActivateWindow(Videos,"plugin://plugin.video.xstream-pro/?mode=live_menu&amp;profile_num=1")</onclick>
+      </control>
+      <control type="button" id="9102">
+        <description>Movies</description><left>430</left><top>0</top><width>390</width><height>300</height>
+        <label>Movies</label><font>NexusCard</font><textcolor>FFFFFFFF</textcolor><focusedcolor>FFFFFFFF</focusedcolor>
+        <texturenofocus colordiffuse="FF172332">white.png</texturenofocus><texturefocus colordiffuse="FF1C554A">white.png</texturefocus>
+        <onup>SetFocus(9105)</onup><ondown>SetFocus(9103)</ondown><onright>SetFocus(9103)</onright><onleft>SetFocus(9101)</onleft>
+        <onclick>ActivateWindow(Videos,"plugin://plugin.video.xstream-pro/?mode=movies_menu&amp;profile_num=1")</onclick>
+      </control>
+      <control type="button" id="9103">
+        <description>Series</description><left>860</left><top>0</top><width>390</width><height>300</height>
+        <label>Series</label><font>NexusCard</font><textcolor>FFFFFFFF</textcolor><focusedcolor>FFFFFFFF</focusedcolor>
+        <texturenofocus colordiffuse="FF172332">white.png</texturenofocus><texturefocus colordiffuse="FF1C554A">white.png</texturefocus>
+        <onup>SetFocus(9105)</onup><ondown>SetFocus(9104)</ondown><onright>SetFocus(9104)</onright><onleft>SetFocus(9102)</onleft>
+        <onclick>ActivateWindow(Videos,"plugin://plugin.video.xstream-pro/?mode=series_menu&amp;profile_num=1")</onclick>
+      </control>
+      <control type="button" id="9104">
+        <description>Search</description><left>1290</left><top>0</top><width>390</width><height>300</height>
+        <label>Search</label><font>NexusCard</font><textcolor>FFFFFFFF</textcolor><focusedcolor>FFFFFFFF</focusedcolor>
+        <texturenofocus colordiffuse="FF172332">white.png</texturenofocus><texturefocus colordiffuse="FF1C554A">white.png</texturefocus>
+        <onup>SetFocus(9105)</onup><ondown>SetFocus(9101)</ondown><onright>SetFocus(9101)</onright><onleft>SetFocus(9103)</onleft>
+        <onclick>ActivateWindow(Videos,"plugin://plugin.video.xstream-pro/?mode=search_global&amp;profile_num=1")</onclick>
+      </control>
+      <control type="button" id="9105">
+        <description>Maintenance settings</description><left>0</left><top>370</top><width>390</width><height>82</height>
+        <label>Maintenance</label><font>NexusSmall</font><textcolor>FFB7C2D0</textcolor><focusedcolor>FFFFFFFF</focusedcolor>
+        <texturenofocus colordiffuse="FF101923">white.png</texturenofocus><texturefocus colordiffuse="FF1C554A">white.png</texturefocus>
+        <onup>SetFocus(9101)</onup><ondown>SetFocus(9101)</ondown><onright>SetFocus(9101)</onright><onleft>SetFocus(9104)</onleft>
+        <onclick>ActivateWindow(Settings)</onclick>
+      </control>
+    </control>
+    <control type="label" id="9003">
+      <left>116</left><top>930</top><width>1000</width><height>42</height>
+      <label>Powered by Kodi  •  Profile: Static</label><font>NexusSmall</font><textcolor>FF718094</textcolor>
+    </control>
+  </controls>
+</window>
