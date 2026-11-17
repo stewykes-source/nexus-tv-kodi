@@ -1,9 +1,11 @@
-Nexus 0.2.0
-- Introduce a refreshed cinematic home layout.
-- Add four direct Xstream Pro entry points for the existing Static profile.
-- Add remote-focus feedback and a safe Kodi Settings route.
-- Keep Kodi responsible for playback; no provider credentials are bundled.
+Nexus 0.3.1
+- Add a dedicated TV Guide tile that opens Kodi's native PVR EPG.
+- Expand the home navigation to Live TV, TV Guide, Movies, TV Series and Search.
+- Use the full Kodi 21 Omega Estuary framework as the packaged base.
+- Apply the Nexus midnight and forest-green palette across the Kodi skin.
+- Preserve native Kodi browsing, PVR, playback, dialogs and settings windows.
 
-Nexus 0.1.1
-- Establish the Kodi 21 skin manifest and initial home navigation.
-- Add automated XML validation and ZIP packaging.
+Nexus 0.3.0
+- Build the installable skin on the pinned Kodi 21 Omega Estuary framework.
+- Retain the full upstream window, dialog, media and PVR XML set.
+- Overlay Nexus branding, home screen, fonts and colour palette.
