@@ -18,7 +18,7 @@ The existing Xstream Pro add-on is opened using Profile 1 (**Static**). Nexus do
 
 ## Install the skin ZIP
 
-1. Download the latest `skin.nexus-*.zip` from the [Actions artifacts](https://github.com/stewykes-source/nexus-tv-kodi/actions) or a versioned [GitHub Release](https://github.com/stewykes-source/nexus-tv-kodi/releases).
+1. Download the `nexus-kodi-skin` artifact from the latest successful [GitHub Actions run](https://github.com/stewykes-source/nexus-tv-kodi/actions). **Install that downloaded artifact ZIP directly** using Kodi's Install from zip file. Its root contains `skin.nexus/` rather than another ZIP nested inside it. For a versioned direct ZIP, use a published [GitHub Release](https://github.com/stewykes-source/nexus-tv-kodi/releases).
 2. In Kodi, enable **Unknown sources** if required.
 3. Open **Add-ons → Install from zip file** and select the ZIP.
 4. Go to **Settings → Interface → Skin** and select **Nexus**.
