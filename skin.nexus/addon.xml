@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="skin.nexus" name="Nexus" version="0.1.0" provider-name="stewykes-source">
+<addon id="skin.nexus" name="Nexus" version="0.1.1" provider-name="stewykes-source">
   <requires>
     <import addon="xbmc.gui" version="5.17.0"/>
   </requires>
@@ -14,7 +14,7 @@
     <source>https://github.com/stewykes-source/nexus-tv-kodi</source>
     <assets>
       <icon>icon.png</icon>
-      <fanart>fanart.jpg</fanart>
+      <fanart>fanart.png</fanart>
     </assets>
   </extension>
 </addon>
