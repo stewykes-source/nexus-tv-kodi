@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+  <include name="NexusFocusGlow">
+    <animation effect="zoom" start="100" end="104" time="120" tween="cubic" easing="out">Focus</animation>
+  </include>
+</includes>
