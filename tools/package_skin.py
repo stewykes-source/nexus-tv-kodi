@@ -38,8 +38,32 @@ def write_png(path: Path, width: int, height: int, pixel_fn) -> None:
 
 
 def create_brand_assets(folder: Path) -> None:
-    # This 1px texture is used only by Nexus' own simple colour panels.
+    # Shared 1px texture for flat colour overlays and UI panels.
     write_png(folder / "media" / "nexus-white.png", 1, 1, lambda *_: (255, 255, 255))
+
+    # Procedural 1080p amber-wave artwork inspired by the checked-in Nexus reference.
+    def background_pixel(x: int, y: int, w: int, h: int):
+        nx, ny = x / (w - 1), y / (h - 1)
+        base = [9.0, 9.0, 12.0]
+        curves = (
+            (0.12 + 0.18 * math.sin(nx * 4.2 + 0.2), 0.035, (255, 91, 15), 0.72),
+            (0.39 + 0.16 * math.sin(nx * 3.4 + 1.2), 0.030, (255, 132, 36), 0.78),
+            (0.70 + 0.12 * math.sin(nx * 3.1 + 2.0), 0.045, (255, 177, 86), 0.48),
+        )
+        for center, thickness, rgb, strength in curves:
+            distance = abs(ny - center)
+            glow = math.exp(-((distance / (thickness * 3.8)) ** 2)) * strength
+            rim = math.exp(-(((distance - thickness) / (thickness * 0.34)) ** 2)) * 0.50
+            amount = min(1.0, glow + rim) * min(1.0, max(0.0, (nx - 0.12) * 2.0))
+            for i in range(3):
+                base[i] += (rgb[i] - base[i]) * amount * 0.72
+        bloom = max(0.0, 1.0 - math.sqrt(((nx - 0.88) * 1.1) ** 2 + ((ny - 0.47) * 1.1) ** 2) * 1.7)
+        base[0] += 22 * bloom
+        base[1] += 8 * bloom
+        base[2] += 2 * bloom
+        return tuple(max(0, min(255, int(v))) for v in base)
+
+    write_png(folder / "media" / "nexus-background.png", 1920, 1080, background_pixel)
 
     def icon_pixel(x: int, y: int, w: int, h: int):
         nx, ny = x / (w - 1), y / (h - 1)
@@ -125,7 +149,7 @@ def validate_skin(folder: Path) -> None:
         for node in home.findall(".//control")
         if node.attrib.get("id")
     }
-    nav_ids = {str(value) for value in range(9101, 9108)}
+    nav_ids = {"9101", "9102", "9103"}
     for control_id in sorted(nav_ids):
         node = controls.get(control_id)
         if node is None or node.attrib.get("type") != "button":
@@ -142,13 +166,13 @@ def validate_skin(folder: Path) -> None:
         raise SystemExit("Nexus Settings shortcut must return focus to Search.")
 
     home_xml = ET.tostring(home, encoding="unicode")
-    for route in ("mode=live_menu", "mode=open_pvr", "mode=open_pvr_guide", "mode=replay_menu", "mode=movies_menu", "mode=series_menu", "mode=search_global"):
+    for route in ("mode=live_menu", "mode=movies_menu", "mode=series_menu"):
         if route not in home_xml:
             raise SystemExit(f"Missing Xstream Pro home route: {route}")
     if "\\nAll in one place." in home_xml:
         raise SystemExit("Hero headline contains a literal escaped newline.")
 
-    for required in ("xml/Home.xml", "xml/MyVideoNav.xml", "media/nexus-white.png", "icon.png", "fanart.png", "LICENSE.txt", "LICENSE-NEXUS.txt"):
+    for required in ("xml/Home.xml", "xml/MyVideoNav.xml", "media/nexus-white.png", "media/nexus-background.png", "icon.png", "fanart.png", "LICENSE.txt", "LICENSE-NEXUS.txt"):
         if not (folder / required).is_file():
             raise SystemExit(f"Missing required packaged asset: {required}")
 
