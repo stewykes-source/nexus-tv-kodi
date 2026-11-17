@@ -1,0 +1,36 @@
+name: Package Nexus Kodi Skin
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "skin.nexus/**"
+      - ".github/workflows/package-skin.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate XML
+        run: |
+          python - <<'PY'
+          import pathlib, xml.etree.ElementTree as ET
+          for path in pathlib.Path("skin.nexus").rglob("*.xml"):
+              ET.parse(path)
+              print(f"OK {path}")
+          PY
+      - name: Create Kodi install ZIP
+        run: |
+          mkdir -p dist
+          zip -r dist/skin.nexus-0.1.0.zip skin.nexus
+      - name: Upload package artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: skin.nexus-0.1.0
+          path: dist/skin.nexus-0.1.0.zip
+          if-no-files-found: error
