@@ -119,6 +119,35 @@ def validate_skin(folder: Path) -> None:
         if required_font not in font_names:
             raise SystemExit(f"Missing required font definition: {required_font}")
 
+    home = ET.parse(folder / "xml" / "Home.xml").getroot()
+    controls = {
+        node.attrib.get("id"): node
+        for node in home.findall(".//control")
+        if node.attrib.get("id")
+    }
+    nav_ids = {str(value) for value in range(9101, 9108)}
+    for control_id in sorted(nav_ids):
+        node = controls.get(control_id)
+        if node is None or node.attrib.get("type") != "button":
+            raise SystemExit(f"Missing Nexus navigation button {control_id}.")
+        for direction in ("onleft", "onright", "onup", "ondown"):
+            action = node.findtext(direction, default="")
+            target = action.removeprefix("SetFocus(").removesuffix(")")
+            if target not in nav_ids | {"9200"}:
+                raise SystemExit(f"Invalid {direction} focus target on navigation button {control_id}: {action}")
+    settings = controls.get("9200")
+    if settings is None or settings.findtext("onclick") != "ActivateWindow(Settings)":
+        raise SystemExit("Nexus Settings shortcut is missing or invalid.")
+    if settings.findtext("onup") != "SetFocus(9107)":
+        raise SystemExit("Nexus Settings shortcut must return focus to Search.")
+
+    home_text = " ".join((node.text or "") for node in home.findall(".//label"))
+    for route in ("mode=live_menu", "mode=open_pvr", "mode=open_pvr_guide", "mode=replay_menu", "mode=movies_menu", "mode=series_menu", "mode=search_global"):
+        if route not in home_text:
+            raise SystemExit(f"Missing Xstream Pro home route: {route}")
+    if "\\\\nAll in one place." in home_text:
+        raise SystemExit("Hero headline contains a literal escaped newline.")
+
     for required in ("xml/Home.xml", "xml/MyVideoNav.xml", "media/nexus-white.png", "icon.png", "fanart.png", "LICENSE.txt", "LICENSE-NEXUS.txt"):
         if not (folder / required).is_file():
             raise SystemExit(f"Missing required packaged asset: {required}")
