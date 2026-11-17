@@ -142,8 +142,8 @@ def main() -> None:
         # The source Nexus skin has decorative multicolour reflection bars;
         # Glass keeps the cleaner, cinematic dock without those stripes.
         home = re.sub(
-            r"\\s*<!-- Neon reflection bars under the dock -->.*?(?=\\s*<!-- Secondary Quick Access Pill Navigation Bar -->)",
-            "\\n",
+            r"\s*<!-- Neon reflection bars under the dock -->.*?(?=\s*<!-- Secondary Quick Access Pill Navigation Bar -->)",
+            "\n",
             home,
             flags=re.S,
         )
