@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import math
+import re
 import shutil
 import struct
 import subprocess
@@ -138,6 +139,14 @@ def main() -> None:
         }
         for old, new in replacements.items():
             home = home.replace(old, new)
+        # The source Nexus skin has decorative multicolour reflection bars;
+        # Glass keeps the cleaner, cinematic dock without those stripes.
+        home = re.sub(
+            r"\\s*<!-- Neon reflection bars under the dock -->.*?(?=\\s*<!-- Secondary Quick Access Pill Navigation Bar -->)",
+            "\\n",
+            home,
+            flags=re.S,
+        )
         home_path.write_text(home, encoding="utf-8")
 
         colors_path = skin / "colors" / "defaults.xml"
