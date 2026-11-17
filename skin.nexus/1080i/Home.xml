@@ -59,47 +59,56 @@
     <control type="group" id="9100">
       <left>112</left><top>690</top><width>1696</width><height>260</height>
       <control type="button" id="9101">
-        <description>Open Live TV in Xstream Pro Static profile</description>
-        <left>0</left><top>0</top><width>310</width><height>220</height>
+        <description>Open the Xstream Pro Live TV menu using the existing Static profile</description>
+        <left>0</left><top>0</top><width>255</width><height>220</height>
         <label>LIVE TV</label><font>NexusCard</font><textcolor>FFFFFFFF</textcolor><focusedcolor>FFFFFFFF</focusedcolor>
         <texturenofocus colordiffuse="FF172A35">nexus-white.png</texturenofocus><texturefocus colordiffuse="FF205849">nexus-white.png</texturefocus>
-        <onup>SetFocus(9101)</onup><ondown>SetFocus(9101)</ondown><onright>SetFocus(9102)</onright><onleft>SetFocus(9105)</onleft>
+        <onup>SetFocus(9101)</onup><ondown>SetFocus(9101)</ondown><onright>SetFocus(9102)</onright><onleft>SetFocus(9106)</onleft>
         <onclick>ActivateWindow(Videos,"plugin://plugin.video.xstream-pro/?mode=live_menu&amp;profile_num=1")</onclick>
         <animation effect="zoom" start="100" end="103" time="120" tween="cubic" easing="out">Focus</animation>
       </control>
       <control type="button" id="9102">
-        <description>Open native Kodi TV Guide and Now/Next EPG</description>
-        <left>340</left><top>0</top><width>310</width><height>220</height>
-        <label>TV GUIDE</label><font>NexusCard</font><textcolor>FFFFFFFF</textcolor><focusedcolor>FFFFFFFF</focusedcolor>
+        <description>Open Kodi PVR channel list</description>
+        <left>280</left><top>0</top><width>255</width><height>220</height>
+        <label>CHANNELS</label><font>NexusCard</font><textcolor>FFFFFFFF</textcolor><focusedcolor>FFFFFFFF</focusedcolor>
         <texturenofocus colordiffuse="FF172A35">nexus-white.png</texturenofocus><texturefocus colordiffuse="FF205849">nexus-white.png</texturefocus>
         <onup>SetFocus(9102)</onup><ondown>SetFocus(9102)</ondown><onright>SetFocus(9103)</onright><onleft>SetFocus(9101)</onleft>
-        <onclick>ActivateWindow(TVGuide)</onclick>
+        <onclick>ActivateWindow(TVChannels)</onclick>
         <animation effect="zoom" start="100" end="103" time="120" tween="cubic" easing="out">Focus</animation>
       </control>
       <control type="button" id="9103">
-        <description>Open Movies in Xstream Pro Static profile</description>
-        <left>680</left><top>0</top><width>310</width><height>220</height>
-        <label>MOVIES</label><font>NexusCard</font><textcolor>FFFFFFFF</textcolor><focusedcolor>FFFFFFFF</focusedcolor>
+        <description>Open native Kodi TV Guide and EPG</description>
+        <left>560</left><top>0</top><width>255</width><height>220</height>
+        <label>TV GUIDE</label><font>NexusCard</font><textcolor>FFFFFFFF</textcolor><focusedcolor>FFFFFFFF</focusedcolor>
         <texturenofocus colordiffuse="FF172A35">nexus-white.png</texturenofocus><texturefocus colordiffuse="FF205849">nexus-white.png</texturefocus>
         <onup>SetFocus(9103)</onup><ondown>SetFocus(9103)</ondown><onright>SetFocus(9104)</onright><onleft>SetFocus(9102)</onleft>
-        <onclick>ActivateWindow(Videos,"plugin://plugin.video.xstream-pro/?mode=movies_menu&amp;profile_num=1")</onclick>
+        <onclick>ActivateWindow(TVGuide)</onclick>
         <animation effect="zoom" start="100" end="103" time="120" tween="cubic" easing="out">Focus</animation>
       </control>
       <control type="button" id="9104">
-        <description>Open Series in Xstream Pro Static profile</description>
-        <left>1020</left><top>0</top><width>310</width><height>220</height>
-        <label>TV SERIES</label><font>NexusCard</font><textcolor>FFFFFFFF</textcolor><focusedcolor>FFFFFFFF</focusedcolor>
+        <description>Open Movies in Xstream Pro Static profile</description>
+        <left>840</left><top>0</top><width>255</width><height>220</height>
+        <label>MOVIES</label><font>NexusCard</font><textcolor>FFFFFFFF</textcolor><focusedcolor>FFFFFFFF</focusedcolor>
         <texturenofocus colordiffuse="FF172A35">nexus-white.png</texturenofocus><texturefocus colordiffuse="FF205849">nexus-white.png</texturefocus>
         <onup>SetFocus(9104)</onup><ondown>SetFocus(9104)</ondown><onright>SetFocus(9105)</onright><onleft>SetFocus(9103)</onleft>
-        <onclick>ActivateWindow(Videos,"plugin://plugin.video.xstream-pro/?mode=series_menu&amp;profile_num=1")</onclick>
+        <onclick>ActivateWindow(Videos,"plugin://plugin.video.xstream-pro/?mode=movies_menu&amp;profile_num=1")</onclick>
         <animation effect="zoom" start="100" end="103" time="120" tween="cubic" easing="out">Focus</animation>
       </control>
       <control type="button" id="9105">
+        <description>Open Series in Xstream Pro Static profile</description>
+        <left>1120</left><top>0</top><width>255</width><height>220</height>
+        <label>TV SERIES</label><font>NexusCard</font><textcolor>FFFFFFFF</textcolor><focusedcolor>FFFFFFFF</focusedcolor>
+        <texturenofocus colordiffuse="FF172A35">nexus-white.png</texturenofocus><texturefocus colordiffuse="FF205849">nexus-white.png</texturefocus>
+        <onup>SetFocus(9105)</onup><ondown>SetFocus(9105)</ondown><onright>SetFocus(9106)</onright><onleft>SetFocus(9104)</onleft>
+        <onclick>ActivateWindow(Videos,"plugin://plugin.video.xstream-pro/?mode=series_menu&amp;profile_num=1")</onclick>
+        <animation effect="zoom" start="100" end="103" time="120" tween="cubic" easing="out">Focus</animation>
+      </control>
+      <control type="button" id="9106">
         <description>Search Xstream Pro Static profile</description>
-        <left>1360</left><top>0</top><width>310</width><height>220</height>
+        <left>1400</left><top>0</top><width>255</width><height>220</height>
         <label>SEARCH</label><font>NexusCard</font><textcolor>FFFFFFFF</textcolor><focusedcolor>FFFFFFFF</focusedcolor>
         <texturenofocus colordiffuse="FF172A35">nexus-white.png</texturenofocus><texturefocus colordiffuse="FF205849">nexus-white.png</texturefocus>
-        <onup>SetFocus(9105)</onup><ondown>SetFocus(9105)</ondown><onright>SetFocus(9101)</onright><onleft>SetFocus(9104)</onleft>
+        <onup>SetFocus(9106)</onup><ondown>SetFocus(9106)</ondown><onright>SetFocus(9101)</onright><onleft>SetFocus(9105)</onleft>
         <onclick>ActivateWindow(Videos,"plugin://plugin.video.xstream-pro/?mode=search_global&amp;profile_num=1")</onclick>
         <animation effect="zoom" start="100" end="103" time="120" tween="cubic" easing="out">Focus</animation>
       </control>
@@ -114,7 +123,7 @@
       <left>1540</left><top>982</top><width>268</width><height>62</height>
       <label>SETTINGS</label><font>NexusSmall</font><textcolor>FF9BA8B8</textcolor><focusedcolor>FFFFFFFF</focusedcolor>
       <texturenofocus colordiffuse="FF101923">nexus-white.png</texturenofocus><texturefocus colordiffuse="FF205849">nexus-white.png</texturefocus>
-      <onup>SetFocus(9105)</onup><ondown>SetFocus(9105)</ondown><onleft>SetFocus(9105)</onleft><onright>SetFocus(9101)</onright>
+      <onup>SetFocus(9106)</onup><ondown>SetFocus(9106)</ondown><onleft>SetFocus(9106)</onleft><onright>SetFocus(9101)</onright>
       <onclick>ActivateWindow(Settings)</onclick>
     </control>
   </controls>
