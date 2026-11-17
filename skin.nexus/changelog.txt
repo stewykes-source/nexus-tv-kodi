@@ -1,3 +1,7 @@
+Nexus 0.3.5
+- Add a dedicated Catch Up tile linked to Xstream Pro's replay menu for Profile 1.
+- Expand the home navigation to seven remote-first destinations.
+
 Nexus 0.3.4
 - Route Channels and TV Guide through Xstream Pro's own PVR entry points.
 - Let Xstream Pro validate credentials, switch its owned PVR profile, prepare channels and wait for PVR readiness before opening Kodi's native windows.
