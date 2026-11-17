@@ -1,11 +1,12 @@
-name: Package Nexus Kodi Skin
+name: Build Nexus Kodi Skin
 
 on:
   push:
     branches: [main]
-    paths:
-      - "skin.nexus/**"
-      - ".github/workflows/package-skin.yml"
+    tags: ["v*"]
+    paths-ignore:
+      - "README.md"
+      - "docs/**"
   workflow_dispatch:
 
 permissions:
@@ -15,22 +16,28 @@ jobs:
   package:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Validate XML
-        run: |
-          python - <<'PY'
-          import pathlib, xml.etree.ElementTree as ET
-          for path in pathlib.Path("skin.nexus").rglob("*.xml"):
-              ET.parse(path)
-              print(f"OK {path}")
-          PY
-      - name: Create Kodi install ZIP
-        run: |
-          mkdir -p dist
-          zip -r dist/skin.nexus-0.1.0.zip skin.nexus
-      - name: Upload package artifact
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build and validate installable skin ZIP
+        run: python tools/package_skin.py --output dist
+
+      - name: Upload ZIP artifact
         uses: actions/upload-artifact@v4
         with:
-          name: skin.nexus-0.1.0
-          path: dist/skin.nexus-0.1.0.zip
+          name: nexus-kodi-skin
+          path: dist/skin.nexus-*.zip
           if-no-files-found: error
+          retention-days: 30
+
+      - name: Publish GitHub Release for version tags
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: dist/skin.nexus-*.zip
